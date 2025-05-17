@@ -1,0 +1,253 @@
+body {
+  margin: 0;
+  background: #0f1117;
+  font-family: 'Fira Code', monospace;
+  color: #00ff9f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-image: radial-gradient(#00ff9f11 1px, transparent 1px);
+  background-size: 30px 30px;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.terminal {
+  background-color: #1e1e2e;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 1000px;
+  box-shadow: 0 0 25px #00ff9f33;
+  position: relative;
+  overflow: hidden;
+  min-height: 700px;
+}
+
+.terminal-header {
+  background: #2c2c3b;
+  padding: 0.5rem;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  z-index: 10;
+  position: relative;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red { background-color: #ff5f56; }
+.yellow { background-color: #ffbd2e; }
+.green { background-color: #27c93f; }
+
+.title {
+  color: #aaa;
+  margin-left: auto;
+  margin-right: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Estructura principal */
+.terminal-body {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 20px;
+  padding: 2rem;
+  position: relative;
+}
+
+/* Columnas laterales */
+.image-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 160px;
+  padding: 20px 0;
+}
+
+.image-column.left {
+  align-items: flex-start;
+  padding-left: 10px;
+}
+
+.image-column.right {
+  align-items: flex-end;
+  padding-right: 10px;
+}
+
+/* Imágenes laterales */
+.side-image {
+  width: 140px;
+  height: 140px;
+  border-radius: 12px;
+  margin: 12px 0;
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(0, 255, 159, 0.4);
+  transition: all 0.3s ease;
+  border: 2px solid #00ff9f33;
+}
+
+.side-image:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(0, 255, 159, 0.6);
+  border-color: #00ff9f66;
+}
+
+.tall-image {
+  height: 180px;
+}
+
+/* Contenido principal */
+.main-content {
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: rgba(30, 30, 46, 0.85);
+  border-radius: 10px;
+  padding: 2rem;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* GIF box */
+.gif-box {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  overflow: hidden;
+  box-shadow: 0 0 100px #00ff9f44;
+  position: absolute;
+  right: -180px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.gif-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Versión móvil - Carrusel */
+.mobile-images {
+  display: none;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 15px 0;
+  margin-bottom: 20px;
+  scrollbar-width: none;
+}
+
+.mobile-images::-webkit-scrollbar {
+  display: none;
+}
+
+.mobile-image {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  margin-right: 15px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 15px rgba(0, 255, 159, 0.3);
+  border: 2px solid #00ff9f33;
+}
+
+/* Estilos de texto */
+.prompt {
+  color: #888;
+}
+
+.highlight {
+  color: #ffd700;
+  font-weight: bold;
+}
+
+.info {
+  color: #87cefa;
+}
+
+a {
+  color: #00eaff;
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .image-column {
+    width: 130px;
+  }
+  
+  .side-image {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .tall-image {
+    height: 150px;
+  }
+  
+  .gif-box {
+    width: 130px;
+    height: 130px;
+    right: -160px;
+  }
+}
+
+@media (max-width: 768px) {
+  .terminal {
+    min-height: auto;
+  }
+  
+  .terminal-body {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+  
+  .image-column {
+    display: none;
+  }
+  
+  .mobile-images {
+    display: block;
+  }
+  
+  .main-content {
+    width: 100%;
+    padding: 1.5rem;
+  }
+  
+  .gif-box {
+    position: static;
+    margin: 20px auto 0;
+    transform: none;
+    order: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal-body {
+    padding: 1rem;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .mobile-image {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .gif-box {
+    width: 120px;
+    height: 120px;
+  }
+}
